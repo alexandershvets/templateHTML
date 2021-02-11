@@ -35,16 +35,17 @@ templateHTML
 - `gulp`  - режим разработки
 - `gulp --prod`  - режим разработки c оптимизацией js и css файлов
 - `gulp --html`  - режим разработки с шаблонизацией html (плагин gulp-file-include)
-- `gulp --webp`  - режим разработки с конвертированием изображегий в формат webp
+- `gulp --webp`  - режим разработки с конвертированием изображений в формат webp
 - `gulp build`  - билд проекта
+- `gulp build --prod`  - билд проекта с оптимизацией js и css файлов
 - `gulp assets`  - пересобрать файлы
 - `gulp html`  - собрать html-файлы
 - `gulp styles` - скомпилировать SASS/SCSS-файлы
 - `gulp scripts` - собрать JS-файлы
 - `gulp images`  -  собрать изображения
-- `gulp clearimg`   - удалить оптимизированные изображения
+- `gulp cleanimg`   - удалить оптимизированные изображения
 - `gulp fonts`  - сконвертировать шрифты в форматы .woff и .woff2
-- `gulp cleardist`   - удалить содержимое папки билда
+- `gulp cleandist`   - удалить содержимое папки билда
 - `gulp otf2ttf`    - конвертация шрифтов .otf  в .ttf
 - `gulp resources`  - перенос ресурсов в папку билда
 - `gulp deployFtp`  - деплой на сервер через FTP
