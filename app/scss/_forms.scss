@@ -1,0 +1,476 @@
+// <FORM ()> ======================================================
+.form {
+  &__row {
+  }
+  &__column {
+  }
+  &__line {
+  }
+  &__input {
+  }
+  &__button {
+  }
+  &__error {
+  }
+}
+// </FORM> ========================================================
+
+// <SELECT (sel+tab)> =============================================
+.select {
+  position: relative;
+  line-height: 1;
+  // .select__item
+  &__item {
+    position: relative;
+  }
+  // .select__title
+  &__title {
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+    @media (max-width: $md2+px) {
+      font-size: 18px;
+    }
+  }
+  // .select__value
+  &__value {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    height: 30px;
+    padding: 0px 15px;
+    font-size: 14px;
+    span {
+      height: 1em;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+    }
+    &:before {
+      content: "";
+      display: inline-block;
+      transition: all 0.3s ease 0s;
+      width: 11px;
+      height: 7px;
+      background: url("../img/icons/select.svg") center / 100% no-repeat;
+    }
+  }
+  &__input {
+    width: 100%;
+    background-color: transparent;
+    height: 100%;
+  }
+  // .select__options
+  &__options {
+    color: #000;
+    display: none;
+    position: absolute;
+    top: 29px;
+    border-radius: 0 0 4px 4px;
+    min-width: 100%;
+    left: 0;
+    background-color: #fff;
+    border-top: 0;
+    border: 1px solid #d9d9d9;
+    border-top: 0;
+    font-size: 14px;
+    padding: 10px 0px 5px 0px;
+    @media (max-width: $md2+px) {
+      font-size: 18px;
+    }
+  }
+  // .select__option
+  &__option {
+    cursor: pointer;
+    padding: 5px 15px;
+    margin: 0px 0px 0px 0px;
+    @media (min-width: 992px) {
+      &:hover {
+        background: #d9d9d9;
+      }
+    }
+  }
+  &._active {
+    z-index: 5;
+    .select__value {
+      &::before {
+        transform: rotate(-180deg);
+      }
+    }
+    .select__options {
+      display: block;
+    }
+  }
+}
+// </SELECT> ======================================================
+
+// <INPUT (inp+tab)> ==============================================
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none; // Отмена крестика в поле search
+}
+
+// input::-moz-placeholder {
+//   text-indent: 0px;
+//   transition: text-indent 0.6s ease;
+// }
+// input:-moz-placeholder {
+//   text-indent: 0px;
+//   transition: text-indent 0.6s ease;
+// }
+// input:-ms-input-placeholder {
+//   text-indent: 0px;
+//   transition: text-indent 0.6s ease;
+// }
+// input:focus::-webkit-input-placeholder {
+//   text-indent: 500px;
+//   transition: text-indent 0.6s ease;
+// }
+// input:focus::-moz-placeholder {
+//   text-indent: 500px;
+//   transition: text-indent 0.6s ease;
+// }
+// input:focus:-moz-placeholder {
+//   text-indent: 500px;
+//   transition: text-indent 0.6s ease;
+// }
+// input:focus:-ms-input-placeholder {
+//   text-indent: 500px;
+//   transition: text-indent 0.6s ease;
+// }
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; // отменяет применение специальных стилей браузера
+}
+.input {
+  display: block;
+  width: 100%;
+  height: 50px;
+  padding: 0px 20px;
+  border-radius: 0 !important;
+  font-size: 20px;
+  &._focus {
+    box-shadow: 0 0 15px #7a956b;
+  }
+  &._error {
+    border: 2px solid red;
+  }
+}
+textarea.input {
+  padding: 0px 0px;
+  resize: none;
+  // resize: vertical;
+}
+// </INPUT> =======================================================
+
+// <CHECK (chk+tab)> ==============================================
+.checkbox {
+  position: relative;
+  // .checkbox__input
+  &__input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    // &:checked + .checkbox__text::before {
+    //   // background: #fff url("../img/icons/check.svg") center no-repeat;
+    //   background: #7a956b url("../img/icons/check.svg") center no-repeat;
+    // }
+    &:checked + .checkbox__text::after {
+      transform: scale(1);
+    }
+  }
+  // .checkbox__text
+  &__text {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    font-size: 16px;
+    // color: #ffffff;
+    color: #333;
+    line-height: calc(20 / 16);
+    letter-spacing: -0.3px;
+    cursor: pointer;
+    &::before {
+      content: "";
+      align-self: flex-start;
+      flex: 0 0 24px;
+      left: 0;
+      top: 0;
+      width: 30px;
+      height: 24px;
+      margin: 0px 14px 0px 0px;
+      border-radius: 4px;
+      background: #fff;
+      border: 1px solid #a7a9ac;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 4px;
+      width: 16px;
+      height: 16px;
+      background-color: #7a956b;
+      border-radius: 4px;
+      transform: scale(0);
+      transition: transform .3s ease 0s;
+    }
+  }
+  a {
+    // color: #fff;
+    color: red;
+    text-decoration: underline;
+    @media (min-width: 992px) {
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+  &._error {
+    .checkbox__text {
+      &:before {
+        border: 1px solid #ee1212;
+      }
+    }
+  }
+}
+// </CHECK> =======================================================
+
+//<OPTIONS (opt+tab)> =============================================
+.options {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  // .options__item
+  &__item {
+    position: relative;
+    cursor: pointer;
+    &._error {
+    }
+  }
+  // .options__input
+  &__input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    left: 0;
+    top: 0;
+    visibility: hidden;
+    &:checked + .options__text::before {
+    }
+    &:checked + .options__text::after {
+      transform: scale(1);
+    }
+  }
+  // .options__text
+  &__text {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    font-size: 16px;
+    color: #333;
+    letter-spacing: -0.3px;
+    line-height: calc(20 / 16);
+    cursor: pointer;
+    &::before {
+      content: "";
+      left: 0;
+      top: 0;
+      align-self: flex-start;
+      flex: 0 0 24px;
+      width: 30px;
+      height: 24px;
+      margin: 0px 14px 0px 0px;
+      border: 1px solid #a7a9ac;
+      border-radius: 50%;
+      background: #fff;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 4px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: #7a956b;
+      transform: scale(0);
+      transition: all .3s ease 0s;
+    }
+  }
+}
+// </OPTIONS> =====================================================
+
+//<RATING> ========================================================
+.rating-block {
+  display: table;
+  font-size: 0;
+}
+.rating {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  &.edit .star {
+    cursor: pointer;
+  }
+  .star {
+    width: 17px;
+    height: 14px;
+    display: inline-block;
+    position: relative;
+    z-index: 3;
+  }
+}
+.rating__line {
+  position: absolute;
+  width: 85px;
+  height: 14px;
+  top: 0;
+  left: 0;
+  background: url("../img/icons/bg_rating.svg") 0 0 no-repeat;
+  z-index: 1;
+  background-size: 85px 100%;
+}
+.rating__activeline {
+  position: absolute;
+  width: 0px;
+  height: 14px;
+  top: 0;
+  left: 0;
+  background: url("../img/icons/bg_rating_active.svg") 0 0 no-repeat;
+  z-index: 2;
+  background-size: 85px 100%;
+}
+.rating__value {
+  display: inline-block;
+  color: #1b3139;
+  font-size: 14px;
+  line-height: 13px;
+  vertical-align: middle;
+}
+// </RATING> =======================================================
+
+// <QUANTITY> ======================================================
+.quantity {
+  display: flex;
+  width: 88px;
+  height: 40px;
+  border: 1px solid rgba(166, 166, 166, 0.45);
+  // .quantity__button
+  &__button {
+    position: relative;
+    flex: 0 0 30px;
+    cursor: pointer;
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transition: all 0.3s ease 0s;
+      margin: 0px 0px 0px -4.5px;
+      background-color: #a6a6a6;
+      width: 9px;
+      height: 1px;
+    }
+    @media (min-width: $md2+px) {
+      &:hover {
+        &::before,
+        &::after {
+          background-color: rgba(0, 0, 0, 0.5);
+        }
+      }
+    }
+    // .quantity__button_plus
+    &_plus {
+      &::before {
+        transform: rotate(-90deg);
+      }
+    }
+    // .quantity__button_minus
+    &_minus {
+    }
+  }
+  // .quantity__input
+  &__input {
+    flex: 1 1 auto;
+    input {
+      height: 100%;
+      color: #a6a6a6;
+      font-size: 12px;
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+// </QUANTITY> =====================================================
+
+
+// <RANGE> =========================================================
+.price {
+  // .price__range
+  &__range {
+  }
+  // .price__inputs
+  &__inputs {
+    display: flex;
+    input {
+      margin: 0px 10px 0px 0px;
+    }
+  }
+}
+// </RANGE> ========================================================
+
+// <FILE> ==========================================================
+.file {
+  // .file__item
+  &__item {
+    position: relative;
+  }
+  // .file__input
+  &__input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  // .file__button
+  &__button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40px;
+    padding: 0 20px;
+    border-radius: 30px;
+    background-color: #77608d;
+    color: #fff;
+  }
+  // .file__preview
+  &__preview {
+    display: inline-block;
+    max-width: 100px;
+    padding-top: 10px;
+    img {
+      max-width: 100%;
+    }
+  }
+}
+// </FILE> =========================================================

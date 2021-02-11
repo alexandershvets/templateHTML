@@ -1,0 +1,106 @@
+@import "mixins";
+
+//&display=swap&subset=cyrillic-ext
+@import "fonts";
+// @import "icons";
+
+// COLORS
+$color_white: #FFFFFF;
+$color_mainshaft: #333333;
+$color_yellow: #FED100;
+$color_grey: #E1EBF4;
+
+// LAYOUT PALETTE
+$accent: $color_yellow;
+$bgColor: $color_white;
+$palettePrimary: $color_white;
+
+// FONTS
+$fontFamily: Arial, "Helvetica Neue", Helvetica, sans-serif;
+$fontSize: 14px;
+$fontWeight: 400;
+$lineHeight: 1;
+$textColor: $color_mainshaft;
+
+// GRID
+$minWidth: 320px;
+$maxWidth: 1920; // Полотно (для правильной работы миксинов)
+$maxWidthContainer: 1170; // Ограничивающий контейнер
+$md1: $maxWidthContainer + 12;
+$md2: 991.98;
+$md3: 767.98;
+$md4: 479.98;
+
+// @import 'vendor/normalize';
+@import "null";
+body {
+  font-family: $fontFamily;
+  font-size: 100%;
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+  background-color: $bgColor;
+  color: $textColor;
+  line-height: $lineHeight;
+  overflow-x: hidden;
+  // text-rendering: optimizeLegibility;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  // scroll-behavior: smooth;
+  &._lock {
+    // position: relative;
+    overflow: hidden;
+    // height: 100vh;
+
+    /* кроссбраузерное решение */
+    // position: fixed;
+    // left: 0;
+    // top: 0;
+    // width: 100%;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  &._loaded {}
+}
+
+._container {
+  // width: 100%;
+  max-width: $maxWidthContainer + px;
+  margin: 0 auto;
+  @media (max-width: $md1 + px) {
+    max-width: 970px;
+  }
+  @media (max-width: $md2 + px) {
+    max-width: 750px;
+  }
+  @media (max-width: $md3 + px) {
+    max-width: none;
+    padding: 0 10px;
+  }
+}
+
+@import "forms";
+@import "ui";
+
+// VENDORS
+@import "vendor/datepicker";
+@import "vendor/lightgallery";
+@import "vendor/tippy";
+@import "vendor/nouislider";
+
+// COMPONENTS
+@import "components/popup";
+@import "components/header";
+@import "components/footer";
+@import "components/home";
+
+// COMMON STYLES
+.page {
+  flex: 1 1 auto;
+}

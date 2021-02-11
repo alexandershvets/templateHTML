@@ -1,0 +1,428 @@
+// <COMMON STYLES> ================================================
+
+// BTN
+.btn {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 252px;
+  height: 50px;
+  padding: 0px 20px;
+  border: none;
+  border-radius: 3px;
+  background-color: $accent;
+  font-family: inherit;
+  font-size: 20px;
+  line-height: 50px;
+  color: #000;
+  // text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: all .3s ease;
+  overflow: hidden;
+  cursor: pointer;
+  @media (min-width: 992px) {
+    &:hover {
+      background-color: darken($accent, 10%);
+    }
+    &:active {}
+  }
+}
+
+// </COMMON STYLES> ===============================================
+
+
+// ================================================================
+.row:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+// ================================================================
+// CURRENCY
+.rub::after {
+  content: "₽";
+}
+
+.doll::after {
+  content: "$";
+}
+
+// ================================================================
+%noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+// ================================================================
+ol.counter {
+  list-style-type: none;
+  counter-reset: item;
+  li {
+    position: relative;
+    padding: 0px 0px 0px 45px;
+    &:before {
+      content: counter(item);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 28px;
+      height: 28px;
+      border: 1px solid #4274bb;
+      border-radius: 50%;
+      font-size: 14px;
+      font-weight: 700;
+      counter-increment: item;
+      color: #818181;
+      text-align: center;
+      line-height: 26px;
+    }
+  }
+}
+
+// ================================================================
+.ellipsis {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.es {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// ================================================================
+.table {
+  display: table;
+  width: 100%;
+  font-size: 0;
+  //table-layout: fixed;
+}
+.trow {
+  display: table-row;
+}
+.cell {
+  display: table-cell;
+  &.full {
+    width: 100%;
+  }
+}
+
+// ================================================================
+// IBG
+._ibg {
+  position: relative;
+  img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+body.ie {
+  ._ibg {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  ._ibg img {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+// ================================================================
+// VIDEO
+.video {
+  position: relative;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  video,
+  iframe,
+  object,
+  embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+.videobg {
+  video,
+  iframe,
+  object,
+  embed {
+    z-index: -100;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    background-size: cover;
+    transform: translateX(-50%) translateY(-50%);
+  }
+}
+
+// ================================================================
+.moretext {
+  overflow: hidden;
+}
+.moretext__more {
+  cursor: pointer;
+  span {
+    font-style: normal;
+    &:first-child {
+      display: block;
+    }
+    &:last-child {
+      display: none;
+    }
+  }
+  &.active {
+    span {
+      font-style: normal;
+      &:first-child {
+        display: none;
+      }
+      &:last-child {
+        display: block;
+      }
+    }
+  }
+}
+
+// ================================================================
+%graystyle {
+  transition: all 0.3s ease 0s;
+  filter: grayscale(1);
+  -webkit-filter: grayscale(1);
+  -moz-filter: grayscale(1);
+  -o-filter: grayscale(1);
+}
+%graystyleoff {
+  filter: grayscale(0);
+  -webkit-filter: grayscale(0);
+  -moz-filter: grayscale(0);
+  -o-filter: grayscale(0);
+}
+
+// ================================================================
+#map {
+  background: url("../img/icons/loading.gif") center / 50px no-repeat;
+}
+
+// ================================================================
+// SWIPER
+._swiper {
+  overflow: hidden;
+  // .swiper-wrapper
+  > div {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+  }
+  &.swiper-container-autoheight {
+    > div {
+      align-items: flex-start;
+    }
+  }
+}
+.swiper-container-initialized {
+  .swiper-slide {
+    flex-shrink: 0;
+    // transition-property: transform;
+  }
+}
+.swiper-container-android {
+  .swiper-slide,
+  .swiper-wrapper {
+    transform: translate3d(0px, 0, 0);
+  }
+}
+.swiper-button-lock {
+  display: none !important;
+}
+
+// ================================================================
+// SLICK-SLIDER
+// Если слайдер находится внутри flex эл-та или сам явл-ся flex эл-ом,
+// нужно обязательно указать flex эл-ту свойство min-width: 0,
+// иначе слайдер работать не будет.
+// Чтобы использовать ленивую загрузку в slick слайдерах,
+// достаточно в тегах img заменить атрибут src на data-lazy. Это решение от slick
+
+.slick-slider {
+  position: relative;
+  // min-width: 0; // Если слайдер является flex елементом, то прописать ему min-width: 0
+  &.slick-initialized {} // Слайдер запущен
+  &.slick-dotted {} // Слайдер с точками
+  .slick-track,
+  .slick-list { // Ограничивающая оболочка
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  .slick-list {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+  .slick-track {
+    position: relative;
+    // display: block // выключи display: flex, чтобы работал параметр vertical: true
+    width: 100%;
+    display: flex;
+    align-items: flex-start; //прижать слайды к верху, чтобы работал параметр adaptiveHeight: true
+  }
+  .slick-slide { // Слайд
+    position: relative;
+    &.slick-active {} // Слайд активный (показывается)
+    &.slick-current {} // Слайд основной
+    &.slick-center {} // Слайд по центру
+    &.slick-cloned {} // Клонированный слайд
+  }
+  .slick-arrow { // Стрелка
+    &.slick-prev {} // Стрелка влево
+    &.slick-next {} // Стрелка вправо
+    &.slick-disabled {} // Стрелка не активная
+  }
+  .slick-dots { // Точки (булиты)
+    li {
+      button {} // Элемент точки
+      &.slick-active { // Активная точка
+        button {}
+      }
+    }
+  }
+}
+
+// ================================================================
+// TABS
+._tabs {
+}
+._tabs-item {
+}
+._tabs-block {
+  display: none;
+  &._active {
+    display: block;
+  }
+}
+
+// ================================================================
+// MIRROR
+.mirror {
+  transform: scale(-1, 1);
+}
+
+// ================================================================
+// NICESCROLL
+.nicescroll-rails {
+  z-index: 1000 !important;
+}
+
+// ================================================================
+// MAPS
+.gm-style {
+}
+.gm-style-iw-t {
+  opacity: 0;
+}
+.baloon {
+  opacity: 1;
+  right: -7px !important;
+  bottom: 80px !important;
+  button {
+    display: none !important;
+  }
+  &:after {
+    display: none !important;
+  }
+}
+.baloon-style {
+  display: none;
+}
+.baloon-content.gm-style-iw {
+  opacity: 1;
+  border-radius: 0px !important;
+  max-width: 300px !important;
+  padding: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  overflow: visible !important;
+  > .gm-style-iw-d {
+    overflow: hidden !important;
+    max-width: none !important;
+  }
+  &:after {
+    display: none !important;
+  }
+}
+.baloon-close {
+  top: 18px !important;
+}
+
+// ================================================================
+// CUSTOM SCROLL
+._custom-scroll {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+  &__line {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 3px 0 0 3px;
+  }
+}
+
+// ================================================================
+// HIDDEN
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+
+// ================================================================
+// RESET BUTTON
+.btn-reset {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+// ================================================================
